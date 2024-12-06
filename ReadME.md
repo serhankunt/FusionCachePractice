@@ -49,3 +49,23 @@
 
 ![FusionCacheDiagram](https://github.com/user-attachments/assets/49d5855b-1036-4476-b0fe-83e0b63a21b4)
 
+
+# Diyagramın Bileşenleri ve Çalışma Mantığı:
+
+- **Method Call** (Metot Çağrısı): Sistemle etkileşimin başladığı noktadır. GetOrSet, Set, Remove gibi metodlar aracılığıyla veriler okunur, yazılır veya silinir.
+- **Memory Cache (Bellek Önbellek)**: En hızlı erişilebilen veri saklama alanı. Sık kullanılan veriler burada tutulur, böylece disk veya ağa erişim ihtiyacı azalır.
+- **Distributed Cache (Dağıtık Önbellek)**: Birden fazla düğümde dağıtılarak daha fazla veri saklama kapasitesi sunar. Yüksek kullanımlı sistemlerde, yükün farklı düğümlere dağıtılmasını sağlar.
+- **Backplane (Veri Otobüsü)**: Farklı bileşenler arasındaki veri iletişimini sağlayan bir tür kanal veya ağdır.
+- **Factory**: Yeni nesnelerin oluşturulmasından sorumlu olan bir bileşendir. Örneğin, yeni bir veri öğesi eklendiğinde, Factory bu öğeyi uygun bir şekilde oluşturur ve cache'e yerleştirir.
+- **Notifications (Bildirimler)**: Veri değişiklikleri olduğunda diğer düğümlere gönderilen mesajlardır. Bu sayede tüm düğümlerdeki veriler senkronize kalır.
+- **Data Source (Veri Kaynağı)**: Verilerin ilk olarak alındığı yerdir (örneğin, bir veritabanı veya bir web servisi).
+# Çalışma Prensibi:
+
+- **Veri İsteği**: Bir uygulama, Fusion Cache sistemine bir veri isteği gönderir (örneğin, bir kullanıcının profil bilgilerini almak).
+- **Bellek Önbelleği Kontrolü**: Sistem öncelikle istediği veriyi en hızlı erişilebilen bellek önbelleğinde arar. Eğer veri burada bulunursa, doğrudan uygulamaya gönderilir.
+- **Dağıtık Önbellek Kontrolü**: Veri bellek önbelleğinde yoksa, dağıtık önbellekte aranır. Bu daha yavaş olabilir, ancak daha fazla veri saklama kapasitesi sunar.
+- **Veri Kaynağı**: Veri hem bellek hem de dağıtık önbelleklerde bulunamadığında, veri kaynağından alınır.
+
+- **Önbelleğe Kaydetme**: Veri kaynağından alınan veri, hem bellek hem de dağıtık önbelleğe kaydedilir. Böylece sonraki isteklerde daha hızlı erişim sağlanır.
+- **Bildirim**: Veri değişikliği olduğunda, diğer düğümlere bildirim gönderilir ve dağıtık önbellek güncellenir.
+
