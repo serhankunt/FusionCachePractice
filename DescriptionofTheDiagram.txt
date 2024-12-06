@@ -1,18 +1,18 @@
-# Diyagramın Bileşenleri ve Çalışma Mantığı:
+# DiyagramÄ±n BileÅŸenleri ve Ã‡alÄ±ÅŸma MantÄ±ÄŸÄ±:
 
-- Method Call (Metot Çağrısı): Sistemle etkileşimin başladığı noktadır. GetOrSet, Set, Remove gibi metodlar aracılığıyla veriler okunur, yazılır veya silinir.
-- Memory Cache (Bellek Önbellek): En hızlı erişilebilen veri saklama alanı. Sık kullanılan veriler burada tutulur, böylece disk veya ağa erişim ihtiyacı azalır.
-- Distributed Cache (Dağıtık Önbellek): Birden fazla düğümde dağıtılarak daha fazla veri saklama kapasitesi sunar. Yüksek kullanımlı sistemlerde, yükün farklı düğümlere dağıtılmasını sağlar.
-- Backplane (Veri Otobüsü): Farklı bileşenler arasındaki veri iletişimini sağlayan bir tür kanal veya ağdır.
-- Factory: Yeni nesnelerin oluşturulmasından sorumlu olan bir bileşendir. Örneğin, yeni bir veri öğesi eklendiğinde, Factory bu öğeyi uygun bir şekilde oluşturur ve cache'e yerleştirir.
-- Notifications (Bildirimler): Veri değişiklikleri olduğunda diğer düğümlere gönderilen mesajlardır. Bu sayede tüm düğümlerdeki veriler senkronize kalır.
-- Data Source (Veri Kaynağı): Verilerin ilk olarak alındığı yerdir (örneğin, bir veritabanı veya bir web servisi).
-# Çalışma Prensibi:
+- **Method Call** (Metot Ã‡aÄŸrÄ±sÄ±): Sistemle etkileÅŸimin baÅŸladÄ±ÄŸÄ± noktadÄ±r. GetOrSet, Set, Remove gibi metodlar aracÄ±lÄ±ÄŸÄ±yla veriler okunur, yazÄ±lÄ±r veya silinir.
+- **Memory Cache (Bellek Ã–nbellek)**: En hÄ±zlÄ± eriÅŸilebilen veri saklama alanÄ±. SÄ±k kullanÄ±lan veriler burada tutulur, bÃ¶ylece disk veya aÄŸa eriÅŸim ihtiyacÄ± azalÄ±r.
+- **Distributed Cache (DaÄŸÄ±tÄ±k Ã–nbellek)**: Birden fazla dÃ¼ÄŸÃ¼mde daÄŸÄ±tÄ±larak daha fazla veri saklama kapasitesi sunar. YÃ¼ksek kullanÄ±mlÄ± sistemlerde, yÃ¼kÃ¼n farklÄ± dÃ¼ÄŸÃ¼mlere daÄŸÄ±tÄ±lmasÄ±nÄ± saÄŸlar.
+- **Backplane (Veri OtobÃ¼sÃ¼)**: FarklÄ± bileÅŸenler arasÄ±ndaki veri iletiÅŸimini saÄŸlayan bir tÃ¼r kanal veya aÄŸdÄ±r.
+- **Factory**: Yeni nesnelerin oluÅŸturulmasÄ±ndan sorumlu olan bir bileÅŸendir. Ã–rneÄŸin, yeni bir veri Ã¶ÄŸesi eklendiÄŸinde, Factory bu Ã¶ÄŸeyi uygun bir ÅŸekilde oluÅŸturur ve cache'e yerleÅŸtirir.
+- **Notifications (Bildirimler)**: Veri deÄŸiÅŸiklikleri olduÄŸunda diÄŸer dÃ¼ÄŸÃ¼mlere gÃ¶nderilen mesajlardÄ±r. Bu sayede tÃ¼m dÃ¼ÄŸÃ¼mlerdeki veriler senkronize kalÄ±r.
+- **Data Source (Veri KaynaÄŸÄ±)**: Verilerin ilk olarak alÄ±ndÄ±ÄŸÄ± yerdir (Ã¶rneÄŸin, bir veritabanÄ± veya bir web servisi).
+# Ã‡alÄ±ÅŸma Prensibi:
 
-- Veri İsteği: Bir uygulama, Fusion Cache sistemine bir veri isteği gönderir (örneğin, bir kullanıcının profil bilgilerini almak).
-- Bellek Önbelleği Kontrolü: Sistem öncelikle istediği veriyi en hızlı erişilebilen bellek önbelleğinde arar. Eğer veri burada bulunursa, doğrudan uygulamaya gönderilir.
-- Dağıtık Önbellek Kontrolü: Veri bellek önbelleğinde yoksa, dağıtık önbellekte aranır. Bu daha yavaş olabilir, ancak daha fazla veri saklama kapasitesi sunar.
-- Veri Kaynağı: Veri hem bellek hem de dağıtık önbelleklerde bulunamadığında, veri kaynağından alınır.
+- **Veri Ä°steÄŸi**: Bir uygulama, Fusion Cache sistemine bir veri isteÄŸi gÃ¶nderir (Ã¶rneÄŸin, bir kullanÄ±cÄ±nÄ±n profil bilgilerini almak).
+- **Bellek Ã–nbelleÄŸi KontrolÃ¼**: Sistem Ã¶ncelikle istediÄŸi veriyi en hÄ±zlÄ± eriÅŸilebilen bellek Ã¶nbelleÄŸinde arar. EÄŸer veri burada bulunursa, doÄŸrudan uygulamaya gÃ¶nderilir.
+- **DaÄŸÄ±tÄ±k Ã–nbellek KontrolÃ¼**: Veri bellek Ã¶nbelleÄŸinde yoksa, daÄŸÄ±tÄ±k Ã¶nbellekte aranÄ±r. Bu daha yavaÅŸ olabilir, ancak daha fazla veri saklama kapasitesi sunar.
+- **Veri KaynaÄŸÄ±**: Veri hem bellek hem de daÄŸÄ±tÄ±k Ã¶nbelleklerde bulunamadÄ±ÄŸÄ±nda, veri kaynaÄŸÄ±ndan alÄ±nÄ±r.
 
-- Önbelleğe Kaydetme: Veri kaynağından alınan veri, hem bellek hem de dağıtık önbelleğe kaydedilir. Böylece sonraki isteklerde daha hızlı erişim sağlanır.
-- Bildirim: Veri değişikliği olduğunda, diğer düğümlere bildirim gönderilir ve dağıtık önbellek güncellenir.
+- **Ã–nbelleÄŸe Kaydetme**: Veri kaynaÄŸÄ±ndan alÄ±nan veri, hem bellek hem de daÄŸÄ±tÄ±k Ã¶nbelleÄŸe kaydedilir. BÃ¶ylece sonraki isteklerde daha hÄ±zlÄ± eriÅŸim saÄŸlanÄ±r.
+- **Bildirim**: Veri deÄŸiÅŸikliÄŸi olduÄŸunda, diÄŸer dÃ¼ÄŸÃ¼mlere bildirim gÃ¶nderilir ve daÄŸÄ±tÄ±k Ã¶nbellek gÃ¼ncellenir.
