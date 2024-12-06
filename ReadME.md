@@ -1,32 +1,32 @@
 # Fusion Cache Nedir ? 
  
-	- Fusion Cache, .NET uygulamalarında yüksek performanslı ve esnek bir cache yöntemi sağlayan bir kütüphanedir. Cacheleme işlemlerinde sıklıkla karşılaşılan sorunları çözmek ve hem in-memory hem de harici cache sistemleriyle kolayca entegre çalışmayı sağlamak amacıyla tasarlanmıştır. Fusion Cache, Memory ve Distributed Cache sistemlerini bir araya getirerek ikili bir yapı sunmaktadır.
+	- Fusion Cache, .NET uygulamalarÄ±nda yÃ¼ksek performanslÄ± ve esnek bir cache yÃ¶ntemi saÄŸlayan bir kÃ¼tÃ¼phanedir. Cacheleme iÅŸlemlerinde sÄ±klÄ±kla karÅŸÄ±laÅŸÄ±lan sorunlarÄ± Ã§Ã¶zmek ve hem in-memory hem de harici cache sistemleriyle kolayca entegre Ã§alÄ±ÅŸmayÄ± saÄŸlamak amacÄ±yla tasarlanmÄ±ÅŸtÄ±r. Fusion Cache, Memory ve Distributed Cache sistemlerini bir araya getirerek ikili bir yapÄ± sunmaktadÄ±r.
 
-## Fusion Cache Özellikleri Nelerdir ? 
+## Fusion Cache Ã–zellikleri Nelerdir ? 
 	
-1. Hızlı ve Güvenilir Cache Mekanizması
-	* Uygulama içerisinde optimize edilmiş ve oldukça düşük gecikme süreleri sağlar.
-	* In-Memory cacheleme sayesinde hızlı erişim sağlar
+1. HÄ±zlÄ± ve GÃ¼venilir Cache MekanizmasÄ±
+	* Uygulama iÃ§erisinde optimize edilmiÅŸ ve oldukÃ§a dÃ¼ÅŸÃ¼k gecikme sÃ¼releri saÄŸlar.
+	* In-Memory cacheleme sayesinde hÄ±zlÄ± eriÅŸim saÄŸlar
 
-2. Fail-Safe Özelliği
-	* Harici bir cache mekanizmasında(örneğin => Redis) hata veya ağ problemi olsa bile in-memory cache üzerinden işlem yaparak uygulamanın çalışmaya devam etmesini sağlar.
+2. Fail-Safe Ã–zelliÄŸi
+	* Harici bir cache mekanizmasÄ±nda(Ã¶rneÄŸin => Redis) hata veya aÄŸ problemi olsa bile in-memory cache Ã¼zerinden iÅŸlem yaparak uygulamanÄ±n Ã§alÄ±ÅŸmaya devam etmesini saÄŸlar.
 
  3. Background Refreshing
-	* Cache'deki veriler eskiyorsa, arka planda yenileyerek uygulamanın bu süreçte etkilenmesini engeller.
+	* Cache'deki veriler eskiyorsa, arka planda yenileyerek uygulamanÄ±n bu sÃ¼reÃ§te etkilenmesini engeller.
  4.Time-To-Live(TTL) ve Time-To-Fail(TTF)
-	* Cache'deki veriler için TTL(ne kadar süre geçerli olacağı) ve TTF(harici cache başarısız olduğunda in-memory cache'in ne kadar kullanılacağı) tanımlanabilir.
+	* Cache'deki veriler iÃ§in TTL(ne kadar sÃ¼re geÃ§erli olacaÄŸÄ±) ve TTF(harici cache baÅŸarÄ±sÄ±z olduÄŸunda in-memory cache'in ne kadar kullanÄ±lacaÄŸÄ±) tanÄ±mlanabilir.
  5. Distributed Cache ile Entegrasyon
-	* Redis, Memcached veya herhangi bir .NET Distributed Cache sağlayıcısıyla entegre edilebilir.
+	* Redis, Memcached veya herhangi bir .NET Distributed Cache saÄŸlayÄ±cÄ±sÄ±yla entegre edilebilir.
 	
 
 
- ## Fusion Cache Nasıl Kullanılır ? 
+ ## Fusion Cache NasÄ±l KullanÄ±lÄ±r ? 
 
-	-Kütüphaneyi yükleyin
+	-KÃ¼tÃ¼phaneyi yÃ¼kleyin
 
 	dotnet add package ZiggyCreatures.FusionCache
 
-	- Temel kullanım
+	- Temel kullanÄ±m
 
 	using ZiggyCreatures.FusionCache;
 	var cache = new FusionCache(new FucisionCacheOptions());
@@ -46,4 +46,6 @@
 	cache.Set("key","distributed value", TimeSpan.FromMinutes(10));
 	var distributedValue =  cache.Get<string>("key");
 
+
+![FusionCacheDiagram](https://github.com/user-attachments/assets/49d5855b-1036-4476-b0fe-83e0b63a21b4)
 
