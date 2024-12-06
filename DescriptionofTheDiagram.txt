@@ -1,0 +1,18 @@
+# Diyagramýn Bileþenleri ve Çalýþma Mantýðý:
+
+- Method Call (Metot Çaðrýsý): Sistemle etkileþimin baþladýðý noktadýr. GetOrSet, Set, Remove gibi metodlar aracýlýðýyla veriler okunur, yazýlýr veya silinir.
+- Memory Cache (Bellek Önbellek): En hýzlý eriþilebilen veri saklama alaný. Sýk kullanýlan veriler burada tutulur, böylece disk veya aða eriþim ihtiyacý azalýr.
+- Distributed Cache (Daðýtýk Önbellek): Birden fazla düðümde daðýtýlarak daha fazla veri saklama kapasitesi sunar. Yüksek kullanýmlý sistemlerde, yükün farklý düðümlere daðýtýlmasýný saðlar.
+- Backplane (Veri Otobüsü): Farklý bileþenler arasýndaki veri iletiþimini saðlayan bir tür kanal veya aðdýr.
+- Factory: Yeni nesnelerin oluþturulmasýndan sorumlu olan bir bileþendir. Örneðin, yeni bir veri öðesi eklendiðinde, Factory bu öðeyi uygun bir þekilde oluþturur ve cache'e yerleþtirir.
+- Notifications (Bildirimler): Veri deðiþiklikleri olduðunda diðer düðümlere gönderilen mesajlardýr. Bu sayede tüm düðümlerdeki veriler senkronize kalýr.
+- Data Source (Veri Kaynaðý): Verilerin ilk olarak alýndýðý yerdir (örneðin, bir veritabaný veya bir web servisi).
+# Çalýþma Prensibi:
+
+- Veri Ýsteði: Bir uygulama, Fusion Cache sistemine bir veri isteði gönderir (örneðin, bir kullanýcýnýn profil bilgilerini almak).
+- Bellek Önbelleði Kontrolü: Sistem öncelikle istediði veriyi en hýzlý eriþilebilen bellek önbelleðinde arar. Eðer veri burada bulunursa, doðrudan uygulamaya gönderilir.
+- Daðýtýk Önbellek Kontrolü: Veri bellek önbelleðinde yoksa, daðýtýk önbellekte aranýr. Bu daha yavaþ olabilir, ancak daha fazla veri saklama kapasitesi sunar.
+- Veri Kaynaðý: Veri hem bellek hem de daðýtýk önbelleklerde bulunamadýðýnda, veri kaynaðýndan alýnýr.
+
+- Önbelleðe Kaydetme: Veri kaynaðýndan alýnan veri, hem bellek hem de daðýtýk önbelleðe kaydedilir. Böylece sonraki isteklerde daha hýzlý eriþim saðlanýr.
+- Bildirim: Veri deðiþikliði olduðunda, diðer düðümlere bildirim gönderilir ve daðýtýk önbellek güncellenir.
